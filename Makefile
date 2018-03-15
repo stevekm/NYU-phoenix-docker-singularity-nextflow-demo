@@ -1,4 +1,5 @@
 SHELL:=/bin/bash
+.PHONY: containers
 
 # ~~~~~ SETUP PIPELINE ~~~~~ #
 ./nextflow:
@@ -9,15 +10,14 @@ install: ./nextflow
 update: ./nextflow
 	./nextflow self-update
 
+containers:
+	cd containers && make build
+
+
 # ~~~~~ RUN PIPELINE ~~~~~ #
-run: install
-	./nextflow run main.nf  -with-dag flowchart.dot $(EP) && \
+run-l: install
+	./nextflow run main.nf -profile local -with-dag flowchart.dot $(EP) && \
 	[ -f flowchart.dot ] && dot flowchart.dot -Tpng -o flowchart.png
-
-resume: install
-	./nextflow run main.nf  -resume -with-dag flowchart.dot $(EP) && \
-        [ -f flowchart.dot ] && dot flowchart.dot -Tpng -o flowchart.png
-
 
 
 # ~~~~~ CLEANUP ~~~~~ #

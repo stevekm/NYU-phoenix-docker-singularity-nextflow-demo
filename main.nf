@@ -13,8 +13,8 @@ process make_file {
 
     script:
     """
-    printf "[make_file]: ${sampleID}\n"
-    printf "[make_file]: ${sampleID}\n" > "${sampleID}.txt"
+    printf "[make_file]: ${sampleID}\n%s\n%s\n%s\n" "\$(nf_test.sh)" "\$(base_test.sh)" "\$(demo1_test.sh)"
+    printf "[make_file]: ${sampleID}\n%s\n%s\n%s\n" "\$(nf_test.sh)" "\$(base_test.sh)" "\$(demo1_test.sh)" > "${sampleID}.txt"
     """
 }
 samples_files.collectFile(name: "samples_files.txt", storeDir: "${params.output_dir}")
