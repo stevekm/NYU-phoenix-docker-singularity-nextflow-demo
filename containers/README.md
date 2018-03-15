@@ -72,7 +72,7 @@ You can convert the Docker container to a Singularity container locally with the
 $ make docker2singularity
 ```
 
-This will create a new file in the `demo1` directory with a name such as `stevekm_phoenix-demo_demo1-2018-03-15-016ce17caf05.img`.
+This will create a new file in the `demo1` directory with a name such as `stevekm_phoenix-demo_demo1-2018-03-15-c8dc739a651a.img`.
 
 As of the time of this writing, running Singularity on Mac requires the usage of Vagrant (see installation notes in `install_vagrant.md`). To test out the Singularity container locally, you can run the following command:
 
@@ -113,7 +113,7 @@ After manually copying the image file from your local computer to the remote ser
 ```bash
 module load singularity/2.4.2
 new_home="$(mktemp -d)"
-singularity shell --home "$new_home" --bind /ifs:/ifs  stevekm_phoenix-demo_demo1-2018-03-15-98ab3fa47f3d.img
+singularity shell --home "$new_home" --bind /ifs:/ifs  stevekm_phoenix-demo_demo1-2018-03-15-c8dc739a651a.img
 ```
 __NOTES:__
 
@@ -126,7 +126,7 @@ __NOTES:__
 If everything works correctly, the output should look like this:
 
 ```
-kellys04@phoenix2:~/projects/NYU-phoenix-docker-singularity-nextflow-demo/containers/demo1$ singularity shell --home "$new_home" --bind /ifs:/ifs  stevekm_phoenix-demo_demo1-2018-03-15-98ab3fa47f3d.img
+kellys04@phoenix2:~/projects/NYU-phoenix-docker-singularity-nextflow-demo/containers/demo1$ singularity shell --home "$new_home" --bind /ifs:/ifs  stevekm_phoenix-demo_demo1-2018-03-15-c8dc739a651a.img
 Singularity: Invoking an interactive shell within container...
 
 kellys04@phoenix2:/ifs/home/kellys04/projects/NYU-phoenix-docker-singularity-nextflow-demo/containers/demo1$ demo1_test.sh
