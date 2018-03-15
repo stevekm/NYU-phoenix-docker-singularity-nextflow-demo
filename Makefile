@@ -15,7 +15,7 @@ containers:
 
 # fetch pre-built Singularity image file from repo
 containers/demo1/stevekm_phoenix-demo_demo1-2018-03-15-c8dc739a651a.img:
-	git checkout image containers/demo1/stevekm_phoenix-demo_demo1-2018-03-15-c8dc739a651a.img.zip && \
+	git checkout origin/image containers/demo1/stevekm_phoenix-demo_demo1-2018-03-15-c8dc739a651a.img.zip && \
 	unzip containers/demo1/stevekm_phoenix-demo_demo1-2018-03-15-c8dc739a651a.img.zip && \
 	rm -f containers/demo1/stevekm_phoenix-demo_demo1-2018-03-15-c8dc739a651a.img.zip
 
