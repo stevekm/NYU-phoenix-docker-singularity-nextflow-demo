@@ -21,6 +21,13 @@ containers/demo1/stevekm_phoenix-demo_demo1-2018-03-15-c8dc739a651a.img:
 
 image: containers/demo1/stevekm_phoenix-demo_demo1-2018-03-15-c8dc739a651a.img
 
+
+test-image: image
+	module load singularity/2.4.2 && \
+	new_home="$$(mktemp -d)" && \
+	singularity shell --home "$$new_home" --bind /ifs:/ifs  containers/demo1/stevekm_phoenix-demo_demo1-2018-03-15-c8dc739a651a.img
+
+
 # ~~~~~ RUN PIPELINE ~~~~~ #
 run-l: install
 	./nextflow run main.nf -profile local -with-dag flowchart.dot && \
@@ -30,6 +37,9 @@ run-p: install
 	module load singularity/2.4.2 && module load jre/1.8 && \
 	./nextflow run main.nf -profile phoenix -with-dag flowchart.dot && \
 	[ -f flowchart.dot ] && dot flowchart.dot -Tpng -o flowchart.png
+
+
+
 
 # ~~~~~ CLEANUP ~~~~~ #
 clean-traces:
