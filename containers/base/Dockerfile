@@ -1,3 +1,4 @@
+# Demo containers for use with Singularity on NYU phoenix HPC
 FROM ubuntu:16.04
 
 MAINTAINER Stephen M. Kelly

@@ -1,2 +1,2 @@
 BootStrap: docker
-From: stevekm/nyu-phoenix-docker-singularity-nextflow-demo:demo1
+From: stevekm/phoenix-demo:demo1

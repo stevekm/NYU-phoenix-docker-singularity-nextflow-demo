@@ -16,9 +16,13 @@ containers:
 
 # ~~~~~ RUN PIPELINE ~~~~~ #
 run-l: install
-	./nextflow run main.nf -profile local -with-dag flowchart.dot $(EP) && \
+	./nextflow run main.nf -profile local -with-dag flowchart.dot && \
 	[ -f flowchart.dot ] && dot flowchart.dot -Tpng -o flowchart.png
 
+run-p: install
+	module load singularity/2.4.2 && module load jre/1.8 && \
+	./nextflow run main.nf -profile phoenix -with-dag flowchart.dot && \
+	[ -f flowchart.dot ] && dot flowchart.dot -Tpng -o flowchart.png
 
 # ~~~~~ CLEANUP ~~~~~ #
 clean-traces:
