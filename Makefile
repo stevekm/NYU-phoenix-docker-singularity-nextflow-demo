@@ -34,8 +34,13 @@ run-l: install containers
 	[ -f flowchart.dot ] && dot flowchart.dot -Tpng -o flowchart.png
 
 run-p: install image
-	module load singularity/2.4.2 && module load jre/1.8 && \
+	module load jre/1.8 && \
 	./nextflow run main.nf -profile phoenix -with-dag flowchart.dot && \
+	[ -f flowchart.dot ] && dot flowchart.dot -Tpng -o flowchart.png
+
+run-pl: install image
+	module load jre/1.8 && \
+	./nextflow run main.nf -profile phoenixlocal -with-dag flowchart.dot && \
 	[ -f flowchart.dot ] && dot flowchart.dot -Tpng -o flowchart.png
 
 
