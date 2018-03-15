@@ -41,15 +41,17 @@ vagrant:
 
 # remove the Vagrant files and Singularity image
 clean:
-	[ -f Vagrantfile ] && rm -f Vagrantfile
-	[ -d .vagrant ] && rm -rf .vagrant
+	[ -f Vagrantfile ] && rm -f Vagrantfile || :
+	[ -d .vagrant ] && rm -rf .vagrant || :
+
+clean-all: clean
 	rm -f demo1/stevekm_phoenix-demo_demo1*.img
 
 # test the new Singularity container inside Vagrant
 # NOTE: macOS sed -i syntax
 # NOTE: make sure there's only 1 .img file in the image dir!
 # clean first to remove remnants from previous runnings of this step!
-test-docker2singularity: clean docker2singularity vagrant
+test-docker2singularity: clean-all docker2singularity vagrant
 	vagrant init singularityware/singularity-2.4 && \
 	sed -i '' 's|  # config.vm.synced_folder "../data", "/vagrant_data"|  config.vm.synced_folder "demo1", "/demo1"|' Vagrantfile && \
 	vagrant up && \
