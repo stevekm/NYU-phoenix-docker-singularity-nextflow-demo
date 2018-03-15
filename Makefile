@@ -14,10 +14,12 @@ containers:
 	cd containers && make build
 
 # fetch pre-built Singularity image file from repo
-containers/demo1/stevekm_phoenix-demo_demo1-2018-03-15-98ab3fa47f3d.img:
-	git checkout img containers/demo1/stevekm_phoenix-demo_demo1-2018-03-15-98ab3fa47f3d.img
+containers/demo1/stevekm_phoenix-demo_demo1-2018-03-15-c8dc739a651a.img:
+	git checkout image containers/demo1/stevekm_phoenix-demo_demo1-2018-03-15-c8dc739a651a.img.zip && \
+	unzip containers/demo1/stevekm_phoenix-demo_demo1-2018-03-15-c8dc739a651a.img.zip && \
+	rm -f containers/demo1/stevekm_phoenix-demo_demo1-2018-03-15-c8dc739a651a.img.zip
 
-image: containers/demo1/stevekm_phoenix-demo_demo1-2018-03-15-98ab3fa47f3d.img
+image: containers/demo1/stevekm_phoenix-demo_demo1-2018-03-15-c8dc739a651a.img
 
 # ~~~~~ RUN PIPELINE ~~~~~ #
 run-l: install
@@ -61,4 +63,5 @@ clean-all: clean clean-output clean-work
 	rm -f *.dot
 
 clean-image:
-	[ -f containers/demo1/stevekm_phoenix-demo_demo1-2018-03-15-98ab3fa47f3d.img ] && rm -f containers/demo1/stevekm_phoenix-demo_demo1-2018-03-15-98ab3fa47f3d.img || :
+	[ -f containers/demo1/stevekm_phoenix-demo_demo1-2018-03-15-c8dc739a651a.img ] && rm -f containers/demo1/stevekm_phoenix-demo_demo1-2018-03-15-c8dc739a651a.img || :
+	[ -f containers/demo1/stevekm_phoenix-demo_demo1-2018-03-15-c8dc739a651a.img.zip ] && rm -f containers/demo1/stevekm_phoenix-demo_demo1-2018-03-15-c8dc739a651a.img.zip || :
